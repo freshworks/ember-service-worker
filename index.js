@@ -78,6 +78,8 @@ module.exports = {
     let serviceWorkerTree = serviceWorkerBuilder.build('service-worker');
     let serviceWorkerRegistrationTree =
       serviceWorkerBuilder.build('service-worker-registration');
+    let serviceWorkerUnRegistrationTree =
+      serviceWorkerBuilder.build('service-worker-unregistration');
 
     if (options.registrationStrategy === 'inline') {
       serviceWorkerRegistrationTree = new InlineRegistration([appTree, serviceWorkerRegistrationTree], options);
@@ -86,19 +88,20 @@ module.exports = {
     return mergeTrees([
       appTree,
       serviceWorkerTree,
-      serviceWorkerRegistrationTree
+      serviceWorkerRegistrationTree,
+      serviceWorkerUnRegistrationTree
     ], { overwrite: true });
   },
 
   contentFor(type, config) {
     let options = this._getOptions();
 
-    if (options.enabled === false) {
+    if (options.enabled === false && !options.unregister) {
       return;
     }
 
     let registrationDistPath = options.registrationDistPath;
-    let srcPath = 'sw-registration.js';
+    let srcPath = (!options.unregister) ? 'sw-registration.js' : 'sw-unregistration.js';
 
     if (registrationDistPath) {
       srcPath = `${registrationDistPath}/${srcPath}`;
