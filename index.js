@@ -107,7 +107,7 @@ module.exports = {
       srcPath = `${registrationDistPath}/${srcPath}`;
     }
 
-    if (type === 'body-footer') {
+    if (type === 'service-worker') {
       if (options.registrationStrategy === 'default') {
         return `<script src="${this._getRootURL()}${srcPath}"></script>`;
       }
