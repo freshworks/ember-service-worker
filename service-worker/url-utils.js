@@ -22,6 +22,17 @@ export function createUrlRegEx(url) {
 }
 
 /**
+ * Create an Regex from a given string
+ *
+ * @param {string} pattern
+ * @returns {RegExp}
+ * @public
+ */
+export function createRegEx(pattern) {
+  return new RegExp(pattern);
+}
+
+/**
  * Check if given URL matches any pattern
  *
  * @param {string} url
@@ -36,5 +47,6 @@ export function urlMatchesAnyPattern(url, patterns) {
 export default {
   createAbsoluteDomain,
   createUrlRegEx,
+  createRegEx,
   urlMatchesAnyPattern
 }
