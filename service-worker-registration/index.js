@@ -14,7 +14,7 @@ const CLEAR_API_CACHE = () => {
 };
 
 let isServiceWorkerEnabled = getCookie(COOKIE_NAME);
-if (isServiceWorkerEnabled == true) {
+if (isServiceWorkerEnabled == 'true') {
   if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('{{ROOT_URL}}sw.js', { scope: '{{ROOT_URL}}' })
       .then(function(reg) {
