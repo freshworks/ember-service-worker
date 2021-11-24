@@ -3,8 +3,6 @@ export const PROJECT_REVISION = '{{PROJECT_REVISION}}';
 let SUCCESS_HANDLERS = [];
 let ERROR_HANDLERS = [];
 
-const COOKIE_NAME = 'service_worker';
-
 if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('{{ROOT_URL}}sw.js', { scope: '{{ROOT_URL}}' })
     .then(function(reg) {
