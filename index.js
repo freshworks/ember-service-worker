@@ -109,7 +109,7 @@ module.exports = {
 
     if (type === 'service-worker') {
       if (options.registrationStrategy === 'default') {
-        return `<script src="${this._getRootURL()}${srcPath}"></script>`;
+        return `<script src="${this._getConfig().rootURL || '/'}${srcPath}"></script>`;
       }
 
       if (options.registrationStrategy === 'inline') {
